@@ -2,9 +2,6 @@ from queue import PriorityQueue
 v = 14
 graph = [[] for i in range(v)]
 
-
-
-
 def best_first_search(actual_Src, target, n):
 	visited = [False] * n
 	pq = PriorityQueue()
