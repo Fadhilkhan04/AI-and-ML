@@ -1,29 +1,40 @@
-from sys import maxsize
-from itertools import permutations
-V = 4
+from collections import defaultdict
 
-def travellingSalesmanProblem(graph, s):
-	vertex = []
-	for i in range(V):
-		if i != s:
-			vertex.append(i)
-
-	min_path = maxsize
-	next_permutation=permutations(vertex)
-	for i in next_permutation:
-		current_pathweight = 0
-		k = s
-		for j in i:
-			current_pathweight += graph[k][j]
-			k = j
-		current_pathweight += graph[k][s]
-		min_path = min(min_path, current_pathweight)
-		
-	return min_path
+jug1, jug2, aim = 4, 3, 2
 
 
-if __name__ == "__main__":
-	graph = [[0, 10, 15, 20], [10, 0, 35, 25],
-			[15, 35, 0, 30], [20, 25, 30, 0]]
-	s = 0
-	print(travellingSalesmanProblem(graph, s))
+visited = defaultdict(lambda: False)
+
+
+def waterJugSolver(amt1, amt2): 
+
+	# Checks for our goal and 
+	# returns true if achieved.
+	if (amt1 == aim and amt2 == 0) or (amt2 == aim and amt1 == 0):
+		print(amt1, amt2)
+		return True
+	
+
+	if visited[(amt1, amt2)] == False:
+		print(amt1, amt2)
+	
+		visited[(amt1, amt2)] = True
+	
+	
+		return (waterJugSolver(0, amt2) or
+				waterJugSolver(amt1, 0) or
+				waterJugSolver(jug1, amt2) or
+				waterJugSolver(amt1, jug2) or
+				waterJugSolver(amt1 + min(amt2, (jug1-amt1)),
+				amt2 - min(amt2, (jug1-amt1))) or
+				waterJugSolver(amt1 - min(amt1, (jug2-amt2)),
+				amt2 + min(amt1, (jug2-amt2))))
+	
+
+	else:
+		return False
+
+print("Steps: ")
+
+
+waterJugSolver(0, 0)
