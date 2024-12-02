@@ -5,6 +5,7 @@ def clean(floor,m):
 
         else:
             print("cleaning location ",i+1)
+            print("location ",i+1," is cleaned")
             floor[i] = 0
     print("cleaning done")
     print(floor)
