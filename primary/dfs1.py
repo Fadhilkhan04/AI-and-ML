@@ -3,7 +3,7 @@ graph = {
   'B' : ['E'],
   'C' : ['D','E'],
   'D' : [],
-  'E' : [],
+  'E' : []
   
 }
 
@@ -24,5 +24,5 @@ def dfs(visited, graph, node):
         stack.append(neighbour)
 
 
-print("Following is the Breadth-First Search")
+print("Following is the Depth-First Search")
 dfs(visited, graph, 'A')  
