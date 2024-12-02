@@ -48,5 +48,11 @@ if __name__ == '__main__':
     root.left.right.right = Node('E')
     root.right.right = Node('I')
     root.right.right.left = Node('H')
+    
+    # root = Node('1')
+    # root.left = Node('2')
+    # root.left.left = Node('4')
+    # root.left.right = Node('5')
+    # root.right = Node('3')
 
     printLevelOrder(root)
